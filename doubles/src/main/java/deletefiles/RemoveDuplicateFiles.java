@@ -21,12 +21,12 @@ public class RemoveDuplicateFiles {
 		folders.add(initFolder);
 		while(!folders.isEmpty()) {
 			Folder next = folders.remove(0);
-			removeFiles(next);
+			searchForRepeatedFiles(next);
 			folders.addAll(next.getAllFolders());
 		}
 	}
 	
-	private void removeFiles(Folder folder) {
+	private void searchForRepeatedFiles(Folder folder) {
 		for(File f: folder.getFiles()) {
 			if (isRepeated(f)) {
 				folder.removeFile(f);
