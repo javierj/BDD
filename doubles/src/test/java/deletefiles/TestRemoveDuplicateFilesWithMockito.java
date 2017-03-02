@@ -34,7 +34,6 @@ public class TestRemoveDuplicateFilesWithMockito {
 		RemoveDuplicateFiles removeDups = new RemoveDuplicateFiles();
 		removeDups.remove(initFolder);
 		
-		
 		verify(initFolder, times(1)).removeFile(file);
 	}
 	
@@ -76,10 +75,34 @@ public class TestRemoveDuplicateFilesWithMockito {
 		
 		verify(initFolder, never()).removeFile(any(File.class));
 	}
-
-
-	//*****************************************************
-	//** EasyMock
 	
+	@Test
+	public void shouldDeleteInSubfolders() {
+		Folder initFolder = mock(Folder.class);
+		
+		// File Stub
+		File file = mock(File.class);
+
+		//stubbing
+		when(file.name()).thenReturn("filename");
+		when(file.size()).thenReturn(10);
+		
+		List<File> files = Arrays.asList(file, file);
+		
+		// Mock
+		Folder subFolder = mock(Folder.class);
+		when(subFolder.getFiles()).thenReturn(files);
+		
+		when(initFolder.getAllFolders()).thenReturn(Arrays.asList(subFolder));
+		
+		//RemoveDuplicateFiles remove = ;
+		RemoveDuplicateFiles remove = new RemoveDuplicateFiles();
+		
+		remove.remove(initFolder);
+		
+		verify(subFolder).removeFile(file);
+		
+	}
+
 
 }

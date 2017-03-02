@@ -13,16 +13,16 @@ public class RemoveDuplicateFiles {
 	Map<String, Integer> fileCache;
 	List<Folder> folders;
 	
-	public RemoveDuplicateFiles() {
+
+	public void remove(Folder initFolder) {
 		fileCache = new HashMap<>();
 		folders = new ArrayList<>();
-	}
-	
-	public void remove(Folder initFolder) {
+		
 		folders.add(initFolder);
 		while(!folders.isEmpty()) {
 			Folder next = folders.remove(0);
 			removeFiles(next);
+			folders.addAll(next.getAllFolders());
 		}
 	}
 	

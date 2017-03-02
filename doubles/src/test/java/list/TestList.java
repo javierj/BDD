@@ -30,7 +30,7 @@ public class TestList {
 	
 	@SuppressWarnings("unchecked")
 	@Test
-	public void testFake() {
+	public void testMock() {
 		List<Integer> l = Mockito.mock(List.class);
 		
 		l.size();
