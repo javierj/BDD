@@ -1,17 +1,17 @@
-package stepsimpl;
+package hellocucumber;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.en.*;
-import hello.MyCucumber;
+import hellocucumber.MyCucumber;
 
 import static org.junit.Assert.*;
 
-public class StepsImpl {
+public class HelloCucumberStepsImpl {
 
 	String name = "Unset";
 	String result = "Unset";
 	
-	@Given("^a student called \"([^\"]*)\"$")
+	@Given("^A student called \"([^\"]*)\"$")
 	public void a_student_called(String name) throws Throwable {
 	   this.name = name;
 	}
@@ -22,7 +22,7 @@ public class StepsImpl {
 	    this.result = cucumber.hello(this.name);
 	}
 
-	@Then("^Cucumber answer \"([^\"]*)\"$")
+	@Then("^Cucumber answers \"([^\"]*)\"$")
 	public void cucumber_answer(String msg) throws Throwable {
 	   assertEquals(this.result, msg);
 	}

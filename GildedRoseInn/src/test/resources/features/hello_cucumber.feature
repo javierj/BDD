@@ -3,7 +3,7 @@ Feature: Hello Cucumber
 	I want a hello world scenario 
 	In order to learn the basics of cucumber
 	
-Scenario:
-	Given a student called "Bob"
+Scenario: Hello student
+	Given A student called "Bob"
 	When Bob says hello to Cucumber
-	Then Cucumber answer "Hello Bob" 
+	Then Cucumber answers "Hello Bob" 

@@ -21,7 +21,7 @@ Scenario: Calidad limite "Aged Brie"
 	
 # Implementamos una tabla
 
-Scenario Outline: eating
+Scenario Outline: Actualización de productos
 	Given <item> con una calidad de <calidad_inicial>
 	And una fecha de venta de <fecha_venta_inicial> dias
 	When transcurre un dia

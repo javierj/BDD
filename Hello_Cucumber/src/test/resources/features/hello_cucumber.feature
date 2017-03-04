@@ -4,6 +4,6 @@ Feature: Hello Cucumber
 	In order to learn the basics of cucumber
 	
 Scenario:
-	Given a student called "Bob"
+	Given A student called "Bob"
 	When Bob says hello to Cucumber
-	Then Cucumber answer "Hello Bob" 
+	Then Cucumber answers "Hello Bob" 
