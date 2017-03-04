@@ -27,6 +27,18 @@ public class HelloCucumberStepsImpl {
 	   assertEquals(this.result, msg);
 	}
 
+	@When("^Bob asks Cucumber to introduce itself$")
+	public void bob_asks_Cucumber_to_introduce_itself() throws Throwable {
+		MyCucumber cucumber = new MyCucumber();
+	    this.result = cucumber.introduceYourself(this.name);
+	}
+
+	@Then("^Cucumber answers$")
+	public void cucumber_answers(String cucumberAnswer) throws Throwable {
+		assertTrue(this.result.contains(this.name));
+	}
+
+
 
 	
 }
