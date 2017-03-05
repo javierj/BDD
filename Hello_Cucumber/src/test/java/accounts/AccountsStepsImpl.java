@@ -39,5 +39,10 @@ public class AccountsStepsImpl {
 		
 	}
 
+	
+	@Given("^the accounts of Bob \\(alt impl\\)$")
+	public void the_accounts_of_Bob_alt_impl(List<Account> accounts) throws Throwable {
+		assertEquals(2, accounts.size());
+	}
 
 }

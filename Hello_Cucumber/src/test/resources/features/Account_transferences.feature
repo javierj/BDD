@@ -1,4 +1,3 @@
-
 Feature: Transferences among accounts of the same owner
 
 Scenario: Valid transference
@@ -11,3 +10,9 @@ Scenario: Valid transference
 		| Id | Amount | 
 		| 01 |    500 |
 		| 02 |    3500| 
+
+Scenario: Valid transference (alt impl)
+	Given the accounts of Bob (alt impl)
+		| Id | Ammount | 
+		| 01 |    1000|
+		| 02 |    3000| 
