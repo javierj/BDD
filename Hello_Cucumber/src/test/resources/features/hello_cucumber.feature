@@ -15,7 +15,7 @@ Scenario:
 		""""
 		Ok Bob, let's go.
 		I'm a library for automating scenario validation.
-		And a vegetable too !!
+		And I'm a vegetable too !!
 		"""
 		
 	

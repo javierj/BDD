@@ -36,5 +36,5 @@ Scenario: Al hacer un nuevo depósito después del primero no se añade el bono de 
 Scenario: El bono de nuevo jugador no se concede por la suma de depósitos
 	When "Bob" realiza un depósito de "5" euros.
 	And "Bob" realiza un depósito de "5" euros.
-	Then El depósito de "Bob" contiene "10" euros.
+	Then El saldo de "Bob" es de "10" euros.
 	

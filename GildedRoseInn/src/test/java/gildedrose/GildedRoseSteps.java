@@ -1,4 +1,4 @@
-package stepsimpl;
+package gildedrose;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.en.*;
@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
-public class StepsImpl {
+public class GildedRoseSteps {
 
 	Item item;
 	

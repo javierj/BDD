@@ -1,4 +1,4 @@
-package stepsimpl;
+package gildedrose;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.en.*;

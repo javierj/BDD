@@ -1,6 +1,5 @@
 package hellocucumber;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.*;
 import hellocucumber.MyCucumber;
 
