@@ -13,10 +13,10 @@ public class ComprarProductosImpl {
 	
 	@Given("^la tienda Dracotienda$")
 	public void la_tienda_Dracotienda() throws Throwable {
-	    // Do nothing
+	    mainPage = new MainPage();
 	}
 
-	@Given("^mi carrito vac?o$")
+	@Given("^mi carrito vacio$")
 	public void mi_carrito_vac_o() throws Throwable {
 	    mainPage.connect();
 	}
@@ -32,8 +32,8 @@ public class ComprarProductosImpl {
 		productPage.buy();
 	}
 
-	@Then("^mi carrito incluye una copia$")
-	public void mi_carrito_incluye_una_copia() throws Throwable {
+	@Then("^mi carrito incluye (\\d+) copia[s|] de \"([^\"]*)\"$")
+	public void mi_carrito_incluye_copias_de(int numCopias, String producto) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    //throw new PendingException();
 	}
@@ -55,11 +55,7 @@ public class ComprarProductosImpl {
 	    //throw new PendingException();
 	}
 
-	@Then("^mi carrito incluye \"([^\"]*)\" copias de \"([^\"]*)\"$")
-	public void mi_carrito_incluye_copias_de(String arg1, String arg2) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new PendingException();
-	}
+
 
 	
 }

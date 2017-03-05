@@ -3,7 +3,6 @@ package accounts;
 import java.util.*;
 
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.*;
 
 import static org.junit.Assert.*;
@@ -27,7 +26,6 @@ public class AccountsStepsImpl {
 
 	@When("^Bob transfers (\\d+) from account \"([^\"]*)\" to account \"([^\"]*)\"$")
 	public void bob_transfers_from_account_to_account( int amount, String source, String target) throws Throwable {
-		//System.out.println("Source "+source + " Target "+ target );
 		this.accounts.transfer("Bob", source, target, amount);
 	}
 

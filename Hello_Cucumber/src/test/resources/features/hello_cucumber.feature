@@ -3,12 +3,12 @@ Feature: Hello Cucumber
 	I want a hello world scenario 
 	In order to learn the basics of cucumber
 	
-Scenario:
+Scenario: Saludate
 	Given A student called "Bob"
 	When Bob says hello to Cucumber
 	Then Cucumber answers "Hello Bob" 
 	
-Scenario:
+Scenario: Introduction
 	Given A student called "Bob"
 	When Bob asks Cucumber to introduce itself
 	Then Cucumber answers 

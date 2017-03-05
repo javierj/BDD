@@ -14,7 +14,7 @@ public class Page {
 	
 	public void connect(String url) throws FailingHttpStatusCodeException, MalformedURLException, IOException {
 		webClient = new WebClient();
-		HtmlPage page = webClient.getPage(url);
+		page = webClient.getPage(url);
 	}
 	
 }
