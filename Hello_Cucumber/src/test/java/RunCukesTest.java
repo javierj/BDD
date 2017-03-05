@@ -4,6 +4,8 @@ import cucumber.api.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions()
+@CucumberOptions(
+		plugin="json:target/cucumber.json"
+)
 public class RunCukesTest {
 }
