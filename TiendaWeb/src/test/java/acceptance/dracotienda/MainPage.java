@@ -7,8 +7,9 @@ import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 
 public class MainPage extends Page {
 
-	public void connect() throws FailingHttpStatusCodeException, MalformedURLException, IOException {
-		super.connect("http://http://www.dracotienda.com");
+	public void connect() throws FailingHttpStatusCodeException, MalformedURLException, IOException {		
+		super.setUp();
+		super.connect("http://www.dracotienda.com");
 	}
 	
 	public ProductPage smashUpLindoPrimoroso() throws FailingHttpStatusCodeException, MalformedURLException, IOException {
@@ -17,5 +18,11 @@ public class MainPage extends Page {
 		return pp;
 	}
 
-	
+	public ShoppingPage pageCarrito() throws Exception {
+		ShoppingPage shoppingPage = new ShoppingPage();
+		shoppingPage.connect("http://www.dracotienda.com/shopping_cart.php");
+		
+		return shoppingPage;
+	}
+
 }

@@ -1,21 +1,19 @@
 Feature: Comprar productos
 	As visitante
-	I want to elegir productos
-	In order to añadirlos al mi carrito de compra
+	I want to pongo productos en mi carrito
+	In order to comprarlos en un futuro
 
 Background:
 	Given la tienda Dracotienda
+	And mi carrito vacio
 	
-Scenario: compro producto con el carrito vacío
-	Given mi carrito vacio
-	And el producto "Smash Up: Lindo y primoroso"
-	When compro el producto "Smash Up: Lindo y primoroso" a mi carrito
-	Then mi carrito incluye 1 copia de "Smash Up: Lindo y primoroso"
-	And el total de mi carrito es 17.95 euros
+Scenario: pongo producto con el carrito vacío
+	When pongo el producto "Smash Up: Lindo y primoroso" a mi carrito
+	Then mi carrito incluye 1 copias de "Smash Up: Lindo y primoroso"
+	And el total de mi carrito es "17.95" euros
 
-Scenario: compro más de una copia
-	Given mi carrito vacío
-	When compro el producto "Smash Up: Lindo y primoroso" a mi carrito
-	And compro el producto "Smash Up: Lindo y primoroso" a mi carrito
+Scenario: pongo más de una copia
+	When pongo el producto "Smash Up: Lindo y primoroso" a mi carrito
+	And pongo el producto "Smash Up: Lindo y primoroso" a mi carrito
 	Then mi carrito incluye 2 copias de "Smash Up: Lindo y primoroso"
-	And el total de mi carrito es 35.90 euros
+	And el total de mi carrito es "35.90" euros
