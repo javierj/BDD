@@ -56,7 +56,9 @@ public class BlackjackGame {
 			if (reglas.accionValida(accion))
 				accion.resuelveAccion(mesa);
 			*/
-			turnoJugador = accion.esPlantarse() || resultado.esFinDeMano();
+			if (accion.esPlantarse() || resultado.esFinDeMano()) {
+				turnoJugador = false;
+			}
 			
 		}
 		Jugador ganador = reglas.ganador(mesa);

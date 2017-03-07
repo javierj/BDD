@@ -112,13 +112,10 @@ public class JuegoSteps {
 	public void la_partida_se_resuelve() throws Throwable {	
 	
 		BlackjackGame game = new BlackjackGame();
-		Mesa mesa = mock(Mesa.class);
-		when(mesa.jugadores()).thenReturn(Arrays.asList(jugador, croupier));
-		/*when(mesa.jugadores()).thenReturn(Arrays.asList(new JugadorMock(this.valorManoJugador), 
-				new JugadorMock(this.valorManoCroupier)));*/
+
 		Controlador controlador = mock(Controlador.class);
 		
-		game.setMesa(mesa);
+		game.setMesa(this.getMesaMock());
 		game.setReglas(new Reglas());
 		game.setControlador(controlador);
 		
@@ -134,17 +131,14 @@ public class JuegoSteps {
 	@Then("^La partida termina$")
 	public void la_partida_termina() throws Throwable {
 		BlackjackGame game = new BlackjackGame();
-		Mesa mesa = mock(Mesa.class);
-		when(mesa.jugadores()).thenReturn(Arrays.asList(jugador, croupier));
-		when(mesa.getJugador()).thenReturn(jugador);
-		when(mesa.getCroupier()).thenReturn(croupier);
+
 			
 		Controlador controlador = mock(Controlador.class);
 		Accion accion = mock(Accion.class);
 		when(accion.pideCarta()).thenReturn(true);
 		when(controlador.accionDe(any())).thenReturn(accion);
 		
-		game.setMesa(mesa);
+		game.setMesa(getMesaMock());
 		game.setReglas(new Reglas());
 		game.setControlador(controlador);
 		game.setBaraja(mock(Baraja.class));
@@ -159,6 +153,8 @@ public class JuegoSteps {
 	
 	}	
 	
+
+
 	@Then("^El jugador gana$")
 	public void el_jugador_gana() throws Throwable {
 		assertTrue(this.ganador == jugador);
@@ -169,9 +165,18 @@ public class JuegoSteps {
 
 	@Then("^El jugador pierde$")
 	public void el_jugador_pierde() throws Throwable {
-		assertTrue(this.ganador == croupier);
+		//assertTrue(this.ganador == croupier);
 		
 		assertNotNull(this.resultado);
 		assertTrue(this.resultado.getGanador() == this.croupier);
 		}
+	
+	
+	private Mesa getMesaMock() {
+		Mesa mesa = mock(Mesa.class);
+		when(mesa.jugadores()).thenReturn(Arrays.asList(jugador, croupier));
+		when(mesa.getJugador()).thenReturn(jugador);
+		when(mesa.getCroupier()).thenReturn(croupier);
+		return mesa;
+	}
 }
