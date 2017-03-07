@@ -1,6 +1,6 @@
 Feature: Doblar la mano
 	As jugador del casino
-	I wanto to jugar más de una mano de manera simultánea
+	I want to to jugar más de una mano de manera simultánea
 	In order to poder ganar más apuestas
 	
 	Criterios de aceptación:

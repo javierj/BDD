@@ -6,7 +6,6 @@ Feature: Jugar manos al Blackjack
 Background:
 	Given "Stu" ha iniciado una partida de Blackjack.
 	Given "Stu" ha apostado "10" euros. 
-
 	
 Scenario: Pasarse
 	Given La mano de Stu es
