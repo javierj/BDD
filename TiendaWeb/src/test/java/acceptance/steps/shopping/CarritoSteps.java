@@ -2,7 +2,7 @@ package steps.shopping;
 
 import cucumber.api.java.Before;
 import cucumber.api.java.en.*;
-import dracotienda.Dracotienda;
+import dracotienda.dsl.Dracotienda;
 
 import static org.junit.Assert.*;
 

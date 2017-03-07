@@ -1,4 +1,4 @@
-package dracotienda;
+package dracotienda.page;
 
 import java.io.IOException;
 

@@ -1,6 +1,6 @@
 package blackjack.juego;
 
-import java.util.Arrays;
+import java.util.*;
 
 import org.mockito.ArgumentCaptor;
 
@@ -14,18 +14,27 @@ import static org.junit.Assert.*;
 
 public class JuegoSteps {
 
-	Jugador jugador ;
-	Jugador croupier;
+	JugadorMock jugador ;
+	JugadorMock croupier;
 	Jugador ganador;
 	private Resultado resultado;
+	//List<Integer>
+	List<Integer> valorManoJugador;
+	List<Integer> valorManoCroupier;
 	
 	@Before
 	public void setUp() {
 		//jugador = new JugadorImpl();
 		//croupier = new JugadorImpl();
 
-		jugador = mock(Jugador.class);
-		croupier = mock(Croupier.class);
+		//jugador = mock(Jugador.class);
+		//croupier = mock(Croupier.class);
+		valorManoJugador = new ArrayList<>();
+		valorManoCroupier = new ArrayList<>();
+		jugador = new JugadorMock(this.valorManoJugador);
+		croupier = new JugadorMock(this.valorManoCroupier);
+		
+		
 	}
 	
 	@Given("^El croupier tiene un \"([^\"]*)\" y una \"([^\"]*)\"$")
@@ -36,13 +45,18 @@ public class JuegoSteps {
 	    Carta c1 = new Carta(carta_1);
 	    Carta c2 = new Carta(carta_2);
 	    //croupier.manoInicial(Arrays.asList(c1, c2));
-	    System.out.println(c1.getValor());
-	    System.out.println(c2.getValor());
-	    croupier = mock(Jugador.class);
-	    assertNotNull(croupier);
-	    Integer valor = c1.getValor() + c2.getValor();
-	    System.out.println(valor);
-	    when(croupier.valorDeMano()).thenReturn(valor);
+	    //System.out.println(c1.getValor());
+	    //System.out.println(c2.getValor());
+	    //croupier = mock(Jugador.class);
+	    //assertNotNull(croupier);
+	    //Integer valor = c1.getValor() + c2.getValor();
+	    //System.out.println(valor);
+	    //when(croupier.valorDeMano()).thenReturn(valor);
+	    
+	    this.croupier.addValor(c1.getValor());
+	    this.croupier.addValor(c2.getValor());
+	    
+
 	}
 	
 	@Given("^El jugador tiene un \"([^\"]*)\" y un \"([^\"]*)\"$")
@@ -53,8 +67,12 @@ public class JuegoSteps {
 	    Carta c1 = new Carta(carta_1);
 	    Carta c2 = new Carta(carta_2);
 	    //jugador.manoInicial(Arrays.asList(c1, c2));
-	    when(jugador.valorDeMano()).thenReturn(c1.getValor() + c2.getValor());
+	    //when(jugador.valorDeMano()).thenReturn(c1.getValor() + c2.getValor());
 
+	    //when(croupier.valorDeMano()).thenReturn(valor);
+	    
+	    this.jugador.addValor(c1.getValor());
+	    this.jugador.addValor(c2.getValor());
 	}
 	
 	
@@ -83,10 +101,11 @@ public class JuegoSteps {
 		
 		//jugador.recibe(new Carta(carta));
 		Carta c = new Carta(carta);
-		Integer valor = jugador.valorDeMano() + c.getValor();
-		jugador = mock(Jugador.class);
-	    when(jugador.valorDeMano()).thenReturn(valor);
-
+		//Integer valor = jugador.valorDeMano() + c.getValor();
+		//jugador = mock(Jugador.class);
+	    //when(jugador.valorDeMano()).thenReturn(valor);
+		this.jugador.addValor(c.getValor());
+	    	
 	}
 	
 	@When("^La partida se resuelve$")
@@ -95,7 +114,8 @@ public class JuegoSteps {
 		BlackjackGame game = new BlackjackGame();
 		Mesa mesa = mock(Mesa.class);
 		when(mesa.jugadores()).thenReturn(Arrays.asList(jugador, croupier));
-		
+		/*when(mesa.jugadores()).thenReturn(Arrays.asList(new JugadorMock(this.valorManoJugador), 
+				new JugadorMock(this.valorManoCroupier)));*/
 		Controlador controlador = mock(Controlador.class);
 		
 		game.setMesa(mesa);
@@ -117,6 +137,7 @@ public class JuegoSteps {
 		Mesa mesa = mock(Mesa.class);
 		when(mesa.jugadores()).thenReturn(Arrays.asList(jugador, croupier));
 		when(mesa.getJugador()).thenReturn(jugador);
+		when(mesa.getCroupier()).thenReturn(croupier);
 			
 		Controlador controlador = mock(Controlador.class);
 		Accion accion = mock(Accion.class);
@@ -126,6 +147,7 @@ public class JuegoSteps {
 		game.setMesa(mesa);
 		game.setReglas(new Reglas());
 		game.setControlador(controlador);
+		game.setBaraja(mock(Baraja.class));
 		
 		this.resultado = game.jugarMano();
 		

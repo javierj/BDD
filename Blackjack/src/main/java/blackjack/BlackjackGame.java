@@ -34,7 +34,7 @@ public class BlackjackGame {
 			return blackjack;
 		}
 		
-		Boolean turnoJugador = false; 
+		Boolean turnoJugador = true; 
 		while(turnoJugador) {
 			Accion accion = controlador.accionDe(mesa.getJugador());
 			Resultado resultado = new ResultadoImpl();
@@ -42,10 +42,13 @@ public class BlackjackGame {
 			// Eso habría quee scribirlo de ora manera
 			if (accion.pideCarta()) {
 				//mesa.cartaParaJugador();
+				System.out.println("Pide carta");
 				mesa.getJugador().recibe(baraja.siguienteCarta());
 				resultado = reglas.sePasa(mesa.getJugador());
+				System.out.println("Fin de mano: " + resultado.esFinDeMano());
 				if (resultado.esFinDeMano()) {
 					resultado.setGanador(mesa.getCroupier());
+					controlador.ganador(mesa.getCroupier());
 					return resultado;
 				}
 			}

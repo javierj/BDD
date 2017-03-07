@@ -1,4 +1,4 @@
-package dracotienda;
+package dracotienda.page;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -23,6 +23,12 @@ public class MainPage extends Page {
 		shoppingPage.connect("http://www.dracotienda.com/shopping_cart.php");
 		
 		return shoppingPage;
+	}
+
+	public AdvancedSearchPage pageAdvancedSearch() throws Exception {
+		AdvancedSearchPage page = new AdvancedSearchPage();
+		page.connect("http://www.dracotienda.com/advanced_search.php");
+		return page;
 	}
 
 }

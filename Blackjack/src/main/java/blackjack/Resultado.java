@@ -6,6 +6,6 @@ public interface Resultado {
 
 	Jugador getGanador();
 
-	void setGanador(Croupier croupier);
+	void setGanador(Jugador jugador);
 
 }

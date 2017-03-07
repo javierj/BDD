@@ -32,7 +32,7 @@ public class ResultadoImpl implements Resultado {
 	}
 
 	@Override
-	public void setGanador(Croupier croupier) {
+	public void setGanador(Jugador croupier) {
 		this.ganador = croupier;
 		
 	}

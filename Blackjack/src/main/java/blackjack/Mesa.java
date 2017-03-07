@@ -22,9 +22,11 @@ public class Mesa {
 	}
 	
 	public void repartirManosIniciales() {
+		/*
 		for(Jugador jug: this.jugador) {
 			jug.manoInicial(this.croupier.getManoInicial());
 		}
+		*/
 	}
 	
 	public List<Jugador> jugadores() {
@@ -46,7 +48,7 @@ public class Mesa {
 		
 	}
 
-	public Croupier getCroupier() {
+	public Jugador getCroupier() {
 		return this.croupier;
 	}
 

@@ -40,8 +40,9 @@ public class Reglas {
 	}
 
 	public Resultado sePasa(Jugador jugador) {
-		System.out.println("Sepasa: "+ jugador.valorDeMano() );
-		if (jugador.valorDeMano() > 21) {
+		Integer valor = jugador.valorDeMano();
+		if (valor > 21) {
+			System.out.println("Se pasa: "+  valor);
 			return new ResultadoImpl(null);
 		}
 		return new ResultadoImpl();

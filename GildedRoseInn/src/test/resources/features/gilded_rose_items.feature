@@ -32,7 +32,8 @@ Examples:
     | item | calidad_inicial | fecha_venta_inicial | calidad_final | fecha_venta_final |
     | "Aged Brie" | 30 | 10 | 31 | 9 |
     | "Aged Brie" | 50 | 10 | 50 | 9 |
-    
+    | "Sulfuras, Hand of Ragnaros" | 80 | 10 | 80 | 10 |
+ 
  # A pesar del outline, estos escenarios tienen valor
  # Si quieres probarlo con TODOS los objetos lo haces en la implementación, no en el escenario.
  Scenario: La calidad no puede bajar de cero

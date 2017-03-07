@@ -1,4 +1,4 @@
-package dracotienda;
+package dracotienda.page;
 
 public class ShoppingPage extends Page {
 
