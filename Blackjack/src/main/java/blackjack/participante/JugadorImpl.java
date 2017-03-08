@@ -1,7 +1,9 @@
-package blackjack;
+package blackjack.participante;
 
 
 import java.util.*;
+
+import blackjack.Carta;
 
 public class JugadorImpl implements Jugador {
 

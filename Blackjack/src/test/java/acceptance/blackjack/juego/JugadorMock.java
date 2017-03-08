@@ -1,9 +1,10 @@
 package blackjack.juego;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import blackjack.Carta;
-import blackjack.Jugador;
+import blackjack.participante.Jugador;
 
 public class JugadorMock implements Jugador {
 	
@@ -16,6 +17,11 @@ public class JugadorMock implements Jugador {
 	}
 	
 	
+	public JugadorMock() {
+		this(new ArrayList<>(10));
+	}
+
+
 	@Override
 	public void manoInicial(List<Carta> cartasIniciales) {
 		// TODO Auto-generated method stub
@@ -45,6 +51,11 @@ public class JugadorMock implements Jugador {
 	    	this.valorManos.add(valor + this.valorManos.get(this.valorManos.size()-1));
 	    }
 		
+	}
+
+
+	public void addValor(Carta carta) {
+		this.addValor(carta.getValor());
 	}
 
 }

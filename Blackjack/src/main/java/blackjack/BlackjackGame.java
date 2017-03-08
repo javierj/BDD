@@ -1,8 +1,10 @@
 package blackjack;
 
+import blackjack.participante.Jugador;
+
 public class BlackjackGame {
 
-	Mesa mesa;
+	//Mesa mesa;
 	Reglas reglas;
 	Controlador controlador;
 	Baraja baraja;
@@ -10,10 +12,10 @@ public class BlackjackGame {
 	public void setBaraja(Baraja baraja) {
 		this.baraja = baraja;
 	}
-	
+	/*
 	public void setMesa(Mesa mesa) {
 		this.mesa = mesa;
-	}
+	}*/
 	
 	public void setReglas(Reglas reglas) {
 		this.reglas = reglas;
@@ -23,7 +25,7 @@ public class BlackjackGame {
 		this.controlador = controlador;
 	}
 	 
-	public Resultado jugarMano() {
+	public Resultado jugarMano(Mesa mesa) {
 		mesa.repartirManosIniciales();
 		controlador.manosIniciales(mesa);
 		
@@ -52,6 +54,8 @@ public class BlackjackGame {
 					return resultado;
 				}
 			}
+			
+		
 			/*
 			if (reglas.accionValida(accion))
 				accion.resuelveAccion(mesa);

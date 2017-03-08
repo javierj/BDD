@@ -2,6 +2,9 @@ package blackjack;
 
 import java.util.List;
 
+import blackjack.participante.Croupier;
+import blackjack.participante.Jugador;
+
 public class Mesa {
 
 	List<Jugador> jugador;

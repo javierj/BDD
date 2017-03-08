@@ -3,6 +3,8 @@
  */
 package blackjack;
 
+import blackjack.participante.Jugador;
+
 /**
  * @author Javier
  *

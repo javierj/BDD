@@ -5,8 +5,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features="./resources",
-		tags={"@clase, @foto01, @foto02, @foto03"}
+		plugin="json:target/cucumber.json"
 )
 public class RunCukesTest {
 }

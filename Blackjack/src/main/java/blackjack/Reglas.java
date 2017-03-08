@@ -1,5 +1,7 @@
 package blackjack;
 
+import blackjack.participante.Jugador;
+
 /**
  * Esto debería ser una interface para 
  * @author Javier
@@ -32,7 +34,11 @@ public class Reglas {
 
 	public Resultado comprobarBlackjack(Mesa mesa) {
 		for(Jugador jug: mesa.jugadores()) {
-			if (jug.valorDeMano() == 21) {
+			Integer jugValor = jug.valorDeMano();
+			if (( jugValor== 21) && (mesa.getCroupier().valorDeMano() == 21)) {
+				return new ResultadoImpl(null);
+			}
+			if (jugValor == 21) {
 				return new ResultadoImpl(jug);
 			}
 		}

@@ -1,5 +1,7 @@
 package blackjack;
 
+import blackjack.participante.Jugador;
+
 public class Controlador {
 
 	public void manosIniciales(Mesa mesa) {

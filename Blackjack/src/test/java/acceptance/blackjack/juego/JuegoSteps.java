@@ -5,7 +5,7 @@ import java.util.*;
 import org.mockito.ArgumentCaptor;
 
 import blackjack.*;
-import cucumber.api.PendingException;
+import blackjack.participante.Jugador;
 import cucumber.api.*;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.*;
@@ -18,30 +18,16 @@ public class JuegoSteps {
 	JugadorMock croupier;
 	Jugador ganador;
 	private Resultado resultado;
-	//List<Integer>
-	List<Integer> valorManoJugador;
-	List<Integer> valorManoCroupier;
+	
 	
 	@Before
 	public void setUp() {
-		//jugador = new JugadorImpl();
-		//croupier = new JugadorImpl();
-
-		//jugador = mock(Jugador.class);
-		//croupier = mock(Croupier.class);
-		valorManoJugador = new ArrayList<>();
-		valorManoCroupier = new ArrayList<>();
-		jugador = new JugadorMock(this.valorManoJugador);
-		croupier = new JugadorMock(this.valorManoCroupier);
-		
-		
+		jugador = new JugadorMock();
+		croupier = new JugadorMock();
 	}
 	
 	@Given("^El croupier tiene un \"([^\"]*)\" y una \"([^\"]*)\"$")
 	public void el_croupier_tiene_un_y_un(String carta_1, String carta_2) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new PendingException();
-	    
 	    Carta c1 = new Carta(carta_1);
 	    Carta c2 = new Carta(carta_2);
 	    //croupier.manoInicial(Arrays.asList(c1, c2));
@@ -61,9 +47,6 @@ public class JuegoSteps {
 	
 	@Given("^El jugador tiene un \"([^\"]*)\" y un \"([^\"]*)\"$")
 	public void el_jugador_tiene_un_y_un(String carta_1, String carta_2) throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
-	    //throw new PendingException();
-	    
 	    Carta c1 = new Carta(carta_1);
 	    Carta c2 = new Carta(carta_2);
 	    //jugador.manoInicial(Arrays.asList(c1, c2));
@@ -115,17 +98,14 @@ public class JuegoSteps {
 
 		Controlador controlador = mock(Controlador.class);
 		
-		game.setMesa(this.getMesaMock());
+		//game.setMesa(this.getMesaMock());
 		game.setReglas(new Reglas());
 		game.setControlador(controlador);
 		
-		this.resultado = game.jugarMano();
+		this.resultado = game.jugarMano(this.getMesaMock());
 		
 		
-		//controlador.ganador(ganador);
-		ArgumentCaptor<Jugador> argument = ArgumentCaptor.forClass(Jugador.class);
-		verify(controlador).ganador(argument.capture());
-		this.ganador = argument.getValue();
+		extractWinner(controlador);
 	}
 	
 	@Then("^La partida termina$")
@@ -138,20 +118,20 @@ public class JuegoSteps {
 		when(accion.pideCarta()).thenReturn(true);
 		when(controlador.accionDe(any())).thenReturn(accion);
 		
-		game.setMesa(getMesaMock());
+		//game.setMesa(getMesaMock());
 		game.setReglas(new Reglas());
 		game.setControlador(controlador);
 		game.setBaraja(mock(Baraja.class));
 		
-		this.resultado = game.jugarMano();
+		this.resultado = game.jugarMano(this.getMesaMock());
 		
 		
 		//controlador.ganador(ganador);
-		ArgumentCaptor<Jugador> argument = ArgumentCaptor.forClass(Jugador.class);
-		verify(controlador).ganador(argument.capture());
-		this.ganador = argument.getValue();
+		extractWinner(controlador);
 	
-	}	
+	}
+
+
 	
 
 
@@ -172,6 +152,52 @@ public class JuegoSteps {
 		}
 	
 	
+	//--- Foto 02 ------------------------------------------------
+	
+	@Given("^El usuario tiene un \"([^\"]*)\" y un \"([^\"]*)\"$")
+	public void el_usuario_tiene_un_y_un(String carta01, String carta02) throws Throwable {
+	    this.jugador.addValor(new Carta(carta01));
+	    this.jugador.addValor(new Carta(carta02));
+	    
+	    // Y el croupier
+	    this.croupier.addValor(10);
+	    this.croupier.addValor(7);
+
+	}
+
+	@When("^El jugador pide una carta y recibe un \"([^\"]*)\"$")
+	public void el_jugador_pide_una_carta_y_recibe_un(String carta) throws Throwable {
+		Carta c = new Carta(carta);
+		this.jugador.addValor(c.getValor());
+	}
+	
+	//--- Foro 03 -----------------------------------------------
+	
+
+@Given("^Cada jugador tiene (\\d+) cartas$")
+public void cada_jugador_tiene_cartas(int arg1) throws Throwable {
+    this.croupier.addValor(10);
+    this.croupier.addValor(7);
+}
+
+@Given("^El jugador \"([^\"]*)\" obtiene las cartas \"([^\"]*)\" y \"([^\"]*)\"$")
+public void el_jugador_obtiene_las_cartas_y(String arg1, String carta01, String carta02) throws Throwable {
+    this.jugador.addValor(new Carta(carta01));
+    this.jugador.addValor(new Carta(carta02));
+    
+}
+
+@When("^se resuelve la partida$")
+public void se_resuelve_la_partida() throws Throwable {
+    this.la_partida_se_resuelve();
+}
+
+@Then("^el jugador \"([^\"]*)\" gana la partida$")
+public void el_jugador_gana_la_partida(String arg1) throws Throwable {
+   this.el_jugador_gana();
+}
+
+	
 	private Mesa getMesaMock() {
 		Mesa mesa = mock(Mesa.class);
 		when(mesa.jugadores()).thenReturn(Arrays.asList(jugador, croupier));
@@ -179,4 +205,10 @@ public class JuegoSteps {
 		when(mesa.getCroupier()).thenReturn(croupier);
 		return mesa;
 	}
+	
+	private void extractWinner(Controlador controlador) {
+		ArgumentCaptor<Jugador> argument = ArgumentCaptor.forClass(Jugador.class);
+		verify(controlador).ganador(argument.capture());
+		this.ganador = argument.getValue();
+	}	
 }
