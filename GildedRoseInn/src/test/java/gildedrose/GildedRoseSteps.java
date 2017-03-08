@@ -24,12 +24,6 @@ public class GildedRoseSteps {
 	    this.item.setSellIn(arg1);
 	}
 
-	@Given("^una fecha de venta de (\\d+) dias$")
-	public void una_fecha_de_venta_de_dias_2(int arg1) throws Throwable {
-	    this.item.setSellIn(arg1);
-
-}
-
 	@Given("^cualquier item con calidad (\\d+)$")
 	public void cualquier_item_con_calidad(int arg1) throws Throwable {
 		item = new Item("Normal_Item", -1, arg1);
