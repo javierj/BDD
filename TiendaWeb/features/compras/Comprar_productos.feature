@@ -1,6 +1,6 @@
 Feature: Comprar productos
 	As visitante
-	I want to pongo productos en mi carrito
+	I want to poner productos en mi carrito
 	In order to comprarlos en un futuro
 
 Background:

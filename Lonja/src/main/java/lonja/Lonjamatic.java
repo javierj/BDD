@@ -1,5 +1,8 @@
 package lonja;
 
+import lonja.servicios.DistanciaCiudades;
+import lonja.servicios.PreciosLonja;
+
 public class Lonjamatic {
 
 	private static final Integer GASTO_CARGA = 5;

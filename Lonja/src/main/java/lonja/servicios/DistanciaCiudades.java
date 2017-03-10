@@ -1,4 +1,4 @@
-package lonja;
+package lonja.servicios;
 
 public interface DistanciaCiudades {
 
